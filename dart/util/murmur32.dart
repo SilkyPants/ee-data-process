@@ -26,18 +26,18 @@ class Murmur32
     length = 0;
   }
 
-  Uint8List computeHashFromString(String source) {
+  ByteData computeHashFromString(String source) {
     Uint8List buffer = Uint8List.fromList(utf8.encode(source));
     return computeHash(buffer, 0, buffer.length);
   }
 
-  Uint8List computeHash(Uint8List buffer, int offset, int count)
+  ByteData computeHash(Uint8List buffer, int offset, int count)
   {    
     _reset();
     hashCore(buffer, 0, buffer.length);
     
     h1 = fMix((h1 ^ length).toUnsigned(32));
-    return  Uint8List(4)..buffer.asByteData().setUint32(0, h1); // bytes of h1
+    return ByteData(4)..buffer.asByteData().setUint32(0, h1);
   }
   
   int fMix(int h) {
