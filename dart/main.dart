@@ -6,10 +6,12 @@ import 'model/category.dart';
 import 'model/group.dart';
 import 'model/item.dart';
 import 'model/localised_string.dart';
+import 'model/market_group_data.dart';
 import 'model/msg_index.dart';
 import 'util/file_extensions.dart';
 
 const staticDataBase = 'data-dump/staticdata';
+const pyStaticDataBase = 'data-dump/py_data/data_common/static';
 
 Map<String, List<LocalisedString>> languageStrings = {};
 
@@ -52,6 +54,14 @@ void main(List<String> args) {
   new File('categories.json').writeAsStringSync(json);
 
   // - Market Groups
+  loadMarketGroups();
+}
+
+void loadMarketGroups() {
+  var marketGroupsFile = new File('$pyStaticDataBase/market_sell_items.json');
+  var str = marketGroupsFile.readAsStringSync();
+  var marketGroupData = marketGroupDataFromJson(str);
+  print('Market Groups = ${marketGroupData.marketGroupId.length}');
 }
 
 Map<int, int> loadMsgIndex() {
