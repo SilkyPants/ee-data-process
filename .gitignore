@@ -7,6 +7,11 @@
 # This should have the data generated
 data-dump/
 
+items.json
+groups.json
+categories.json
+languageStrings.json
+
 # Flutter/Dart
 # Files and directories created by pub
 .dart_tool/
@@ -459,6 +464,3 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-items.json
-groups.json
-categories.json
